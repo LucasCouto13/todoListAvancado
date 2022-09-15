@@ -1,5 +1,6 @@
 
 var myUser = new User();
+var myDataBase = new Database();
 
 function showTodoList(){
     $(".form-signin").hide('slow');

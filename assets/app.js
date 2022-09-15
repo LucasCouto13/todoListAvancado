@@ -1,3 +1,6 @@
+
+var myDataBase = new Database();
+
 // Seleção de elementos
 const todoForm = document.querySelector('#todo-form');
 const todoInput = document.querySelector('#todo-input');
@@ -9,6 +12,7 @@ const cancelEditBtn= document.querySelector('#cancel-edit-btn');
 let oldInputValue;
 
 const tasks = JSON.parse(localStorage.getItem('tasksList')) || [];
+myDataBase.insertRow(tasks, 123);
 
 //Funções
 
@@ -82,6 +86,8 @@ todoForm.addEventListener("submit", (e) =>{
     e.preventDefault();
     
     const inputValue = todoInput.value //pega o valor
+    
+    myDataBase.insertRow("inputValue", "20/03/2022");
 
     if(inputValue){
         //Salvar to do

@@ -12,8 +12,6 @@ const cancelEditBtn= document.querySelector('#cancel-edit-btn');
 let oldInputValue;
 
 const tasks = JSON.parse(localStorage.getItem('tasksList')) || [];
-myDataBase.insertRow(tasks, 123);
-
 //Funções
 
 const saveTodo = (text) =>{
@@ -48,6 +46,8 @@ const saveTodo = (text) =>{
     deleteBtn.classList.add("remove-todo");
     deleteBtn.innerHTML ='<i class="fa-solid fa-xmark"></i>';
     todo.appendChild(deleteBtn);
+
+    //myDataBase.writeRowInHtml();
     
     //Colocar a div "todo" na div central das tarefas
     todoList.appendChild(todo);
@@ -86,10 +86,11 @@ todoForm.addEventListener("submit", (e) =>{
     e.preventDefault();
     
     const inputValue = todoInput.value //pega o valor
-    
-    myDataBase.insertRow("inputValue", "20/03/2022");
 
+    console.log(inputValue);
+    
     if(inputValue){
+
         //Salvar to do
         saveTodo(inputValue)
         tasks.push(inputValue);
@@ -111,6 +112,7 @@ document.addEventListener("click", (e) => {
 
     if(targetEl.classList.contains("finish-todo")){
         parentEl.classList.toggle("done");
+        myDataBase.writeRowInHtml(targetEl);   
     }
 
     if(targetEl.classList.contains("remove-todo")){
